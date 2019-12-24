@@ -10,15 +10,15 @@ class OddscheckerscraperSpider(scrapy.Spider):
     name = 'oddsCheckerScraper'
     allowed_domains = ['www.oddschecker.com']
     start_urls = ['http://www.oddschecker.com']
+    sports = []
+
+    def __init__(self, *args, **kwargs): 
+      super(OddscheckerscraperSpider, self).__init__(*args, **kwargs) 
+      self.sports = [kwargs.get('sports')] 
 
     #start parsing
     def parse(self, response):
-        sports = []
-
-        sports.append('/basketball')
-        #sports.append('/american-football')
-        #sports.append('/football')
-        #sports.append('/darts/pdc-world-championship')
+        sports = self.sports
 
         for sport in sports:
             url = urljoin(response.url, sport)

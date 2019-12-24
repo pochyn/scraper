@@ -1,0 +1,1 @@
+scrapy crawl oddsCheckerScraper -a sports="/american-football"
